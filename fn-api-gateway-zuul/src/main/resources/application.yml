@@ -1,0 +1,39 @@
+server:
+  port: 8765
+  
+spring:
+  application:
+    name: fn-api-gateway-zuul
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://fn-eureka-server:8761/eureka
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+ribbon:
+  ConnectTimeout: 10000
+  ReadTimeout: 10000
+  
+zuul:
+  routes:
+    investor:
+      service-id: fn-investor
+      path: /fn-investors/**
+    payroll:
+      service-id: fn-payroll
+      path: /fn-payroll/**
+    user:
+      service-id: fn-user
+      path: /fn-user/**
+    oauth:
+      service-id: fn-oauth
+      path: /fn-oauth/**
+      sensitive-headers: Cookie,Set-Cookie

@@ -1,0 +1,15 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: fn-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/tiagokihara/configs
+          search-paths: ms-finance
+          username: ${GIT_USER}
+          password: ${GIT_PASSWORD}
+          default-label: main

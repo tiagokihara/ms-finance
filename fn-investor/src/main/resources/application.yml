@@ -1,0 +1,17 @@
+server:
+  port: ${PORT:0}
+  
+spring:
+  application:
+    name: fn-investor  
+  jpa:
+    defer-datasource-initialization: true
+  profiles:
+    active: test
+      
+eureka:
+  client:
+    service-url:
+      defaultZone: http://fn-eureka-server:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
