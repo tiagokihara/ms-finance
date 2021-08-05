@@ -30,7 +30,12 @@ public class UserController {
 	}
 
 	@PostMapping(value = "/")
-	public ResponseEntity<User> createEmail(@RequestParam String email) {
-		return ResponseEntity.ok(userRepository.findByEmail(email).orElseThrow(IllegalArgumentException::new));
+	public ResponseEntity<User> createEmailTeste1(@RequestParam String email) {
+		return ResponseEntity.ok(userRepository.findById(12L).orElseThrow());
+	}
+
+	@PostMapping(value = "/")
+	public ResponseEntity<User> createEmailTeste2(@RequestParam String email) {
+		return ResponseEntity.ok(userRepository.findById(11L).orElseThrow());
 	}
 }
